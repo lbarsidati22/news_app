@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class BusnicePage extends StatelessWidget {
-  const BusnicePage({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        ' Busnice Page',
+        ' Settings Page',
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,

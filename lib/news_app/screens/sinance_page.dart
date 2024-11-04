@@ -7,11 +7,13 @@ class SinancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Sinance Page',
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
+    return Center(
+      child: Text(
+        'Sinance Page',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
