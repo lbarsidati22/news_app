@@ -8,7 +8,13 @@ class TestBusunes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Busunes'),
+      child: Text(
+        'Busunes',
+        style: TextStyle(
+          fontSize: 19,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }

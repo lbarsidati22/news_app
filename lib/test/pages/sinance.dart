@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class TestSinance extends StatelessWidget {
@@ -6,7 +8,13 @@ class TestSinance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Sinance'),
+      child: Text(
+        'Sinance',
+        style: TextStyle(
+          fontSize: 19,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }

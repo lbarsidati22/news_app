@@ -4,11 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:news_app/api/dio_helper.dart';
 import 'package:news_app/news_app/news_layout.dart';
 import 'package:news_app/shared/bloc_observer.dart';
+import 'package:news_app/test/test_api/test_dio_helper.dart';
 import 'package:news_app/test/test_home_layout/test_home.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
+  // TestDioHelper.init();
   runApp(const MyApp());
 }
 
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const TestHomeLayout(),
+      home: const NewsLayout(),
     );
   }
 }
