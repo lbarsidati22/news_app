@@ -14,3 +14,27 @@ class NewsGetBusinusErrotState extends NewsStats {
     this.error,
   });
 }
+
+class NewsGetSportsLeadingState extends NewsStats {}
+
+class NewsGetSportsSuccecsState extends NewsStats {}
+
+class NewsGetSportsErrotState extends NewsStats {
+  final String? error;
+  NewsGetSportsErrotState({
+    this.error,
+  });
+}
+
+class NewsGetSeinanceLeadingState extends NewsStats {}
+
+class NewsGetSeinanceSuccecsState extends NewsStats {}
+
+class NewsGetSeinanceErrotState extends NewsStats {
+  final String? error;
+  NewsGetSeinanceErrotState({
+    this.error,
+  });
+}
+
+class NewsDarkModeState extends NewsStats {}

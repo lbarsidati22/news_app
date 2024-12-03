@@ -12,10 +12,9 @@ class BusnicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewsCubit, NewsStats>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
+        var articles = NewsCubit.get(context).busnice;
         if (state is! NewsGetBusinusLeadingState) {
           return ListView.separated(
               physics: BouncingScrollPhysics(),
@@ -26,7 +25,7 @@ class BusnicePage extends StatelessWidget {
               },
               itemCount: 5,
               itemBuilder: (context, index) {
-                return buildArchivedItem();
+                return buildArchivedItem(articles[index]);
               });
         }
         return Center(

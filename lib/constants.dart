@@ -1,6 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-Widget buildArchivedItem() => Padding(
+Widget buildArchivedItem(
+  articles,
+) =>
+    Padding(
       padding: const EdgeInsets.all(20.0),
       child: Row(
         children: [
@@ -11,8 +16,7 @@ Widget buildArchivedItem() => Padding(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkof-ZToqvYT39H7mxUZxXgSNW801rHKcaqA&s'),
+                image: NetworkImage(articles['urlToImage']),
               ),
             ),
           ),
@@ -30,7 +34,7 @@ Widget buildArchivedItem() => Padding(
                     child: Text(
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
-                      'tite ',
+                      '${articles['title']}',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -38,7 +42,7 @@ Widget buildArchivedItem() => Padding(
                     ),
                   ),
                   Text(
-                    '22:00/12/2034 0098h',
+                    '${articles['publishedAt']}',
                     style: TextStyle(
                       color: Colors.grey,
                     ),
