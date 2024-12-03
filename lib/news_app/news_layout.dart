@@ -12,31 +12,12 @@ class NewsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NewsCubit(),
+      create: (context) => NewsCubit()..getBusnice(),
       child: BlocConsumer<NewsCubit, NewsStats>(
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = NewsCubit.get(context);
           return Scaffold(
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                DioHelper.getData(
-                  url: 'top-headlines',
-                  quiry: {
-                    'country': 'us',
-                    'category': 'business',
-                    'apiKey': 'bbe42778b2a04297b21039c12c152aea',
-                  },
-                ).then((onValue) {
-                  print(onValue.data.toString());
-                }).catchError((onError) {
-                  print(onError.toString());
-                });
-              },
-              child: Icon(
-                Icons.add,
-              ),
-            ),
             appBar: AppBar(
               actions: [
                 IconButton(

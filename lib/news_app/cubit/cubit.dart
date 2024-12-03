@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/api/dio_helper.dart';
 import 'package:news_app/news_app/cubit/state.dart';
 import 'package:news_app/news_app/screens/busnice_page.dart';
 import 'package:news_app/news_app/screens/settings_page.dart';
@@ -48,5 +49,26 @@ class NewsCubit extends Cubit<NewsStats> {
   void changNavBar(int index) {
     currentIndex = index;
     emit(NewsBottomNavState());
+  }
+
+  List<dynamic> busnice = [];
+  void getBusnice() {
+    emit(NewsGetBusinusLeadingState());
+    DioHelper.getData(
+      url: 'top-headlines',
+      quiry: {
+        'country': 'us',
+        'category': 'business',
+        'apiKey': 'bbe42778b2a04297b21039c12c152aea',
+      },
+    ).then((onValue) {
+      // print(onValue.data.toString());
+      busnice = onValue.data['articles'];
+      print(busnice[0]['title']);
+      emit(NewsGetBusinusSuccecsState());
+    }).catchError((onError) {
+      print(onError.toString());
+      NewsGetBusinusErrotState(error: onError.toString());
+    });
   }
 }

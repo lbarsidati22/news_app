@@ -44,7 +44,7 @@ class TestHomeLayout extends StatelessWidget {
                   'category': 'business',
                   'apiKey': 'bbe42778b2a04297b21039c12c152aea',
                 }).then((onValue) {
-                  print(onValue.data.toString());
+                  print(onValue.data['articles'][0]['title']);
                 }).catchError((onError) {
                   print(onError.toString());
                 });
