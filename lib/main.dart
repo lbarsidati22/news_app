@@ -15,8 +15,8 @@ import 'package:news_app/test/test_home_layout/test_home.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
-  // DioHelper.init();
-  TestDioHelper.init();
+  DioHelper.init();
+  // TestDioHelper.init();
   runApp(const MyApp());
 }
 
@@ -92,7 +92,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
-            home: const TestHomeLayout(),
+            home: const NewsLayout(),
           );
         },
       ),
