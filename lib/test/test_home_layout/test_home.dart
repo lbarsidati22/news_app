@@ -13,7 +13,10 @@ class TestHomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TestNewsCubit>(
-      create: (context) => TestNewsCubit(),
+      create: (context) => TestNewsCubit()
+        ..getBusiness()
+        ..getSports()
+        ..getScience(),
       child: BlocConsumer<TestNewsCubit, TestNewsState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -36,20 +39,6 @@ class TestHomeLayout extends StatelessWidget {
               },
               currentIndex: cubit.currentIndex,
               items: cubit.testBottomItem,
-            ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                TestDioHelper.getData(url: 'top-headlines', query: {
-                  'country': 'us',
-                  'category': 'business',
-                  'apiKey': 'bbe42778b2a04297b21039c12c152aea',
-                }).then((onValue) {
-                  print(onValue.data['articles'][0]['title']);
-                }).catchError((onError) {
-                  print(onError.toString());
-                });
-              },
-              child: Icon(Icons.add),
             ),
             body: cubit.screens[cubit.currentIndex],
           );

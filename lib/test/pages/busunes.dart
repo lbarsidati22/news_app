@@ -1,20 +1,39 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/test/test_cubit/test_cubit.dart';
+import 'package:news_app/test/test_cubit/test_state.dart';
+import 'package:news_app/test/test_items.dart';
 
 class TestBusunes extends StatelessWidget {
   const TestBusunes({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Busunes',
-        style: TextStyle(
-          fontSize: 19,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+    return BlocConsumer<TestNewsCubit, TestNewsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var articles = TestNewsCubit.get(context).business;
+        if (state is! TestBusunesLeadingSatete) {
+          return ListView.separated(
+            itemBuilder: (context, index) {
+              return testarchivedItem(articles[index]);
+            },
+            separatorBuilder: (context, index) {
+              return Divider(
+                thickness: 3,
+              );
+            },
+            itemCount: 6,
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(
+            color: Colors.deepOrange,
+          ),
+        );
+      },
     );
   }
 }

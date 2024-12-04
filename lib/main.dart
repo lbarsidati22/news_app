@@ -10,12 +10,13 @@ import 'package:news_app/news_app/cubit/state.dart';
 import 'package:news_app/news_app/news_layout.dart';
 import 'package:news_app/shared/bloc_observer.dart';
 import 'package:news_app/test/test_api/test_dio_helper.dart';
+import 'package:news_app/test/test_cubit/test_cubit.dart';
 import 'package:news_app/test/test_home_layout/test_home.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
-  DioHelper.init();
-  // TestDioHelper.init();
+  // DioHelper.init();
+  TestDioHelper.init();
   runApp(const MyApp());
 }
 
@@ -25,8 +26,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NewsCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => NewsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => TestNewsCubit(),
+        ),
+      ],
       child: BlocConsumer<NewsCubit, NewsStats>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -84,7 +92,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
             themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
-            home: const NewsLayout(),
+            home: const TestHomeLayout(),
           );
         },
       ),
