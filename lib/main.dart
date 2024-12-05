@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/api/cache_helper.dart';
 import 'package:news_app/api/dio_helper.dart';
 import 'package:news_app/news_app/cubit/cubit.dart';
 import 'package:news_app/news_app/cubit/state.dart';
@@ -13,9 +14,11 @@ import 'package:news_app/test/test_api/test_dio_helper.dart';
 import 'package:news_app/test/test_cubit/test_cubit.dart';
 import 'package:news_app/test/test_home_layout/test_home.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
+  await CacheHelper.init();
   // TestDioHelper.init();
   runApp(const MyApp());
 }
