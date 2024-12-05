@@ -37,4 +37,15 @@ class NewsGetSeinanceErrotState extends NewsStats {
   });
 }
 
+class NewsGetSearchLeadingState extends NewsStats {}
+
+class NewsGetSearchSuccecsState extends NewsStats {}
+
+class NewsGetSearchErrotState extends NewsStats {
+  final String? error;
+  NewsGetSearchErrotState({
+    this.error,
+  });
+}
+
 class NewsDarkModeState extends NewsStats {}

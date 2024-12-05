@@ -128,6 +128,27 @@ class NewsCubit extends Cubit<NewsStats> {
     }
   }
 
+  List<dynamic> search = [];
+  void getSearch(value) {
+    emit(NewsGetSearchLeadingState());
+    search = [];
+    DioHelper.getData(
+      url: 'everything',
+      quiry: {
+        'q': '$value',
+        'apiKey': 'bbe42778b2a04297b21039c12c152aea',
+      },
+    ).then((onValue) {
+      // print(onValue.data.toString());
+      search = onValue.data['articles'];
+      print(search[0]['title']);
+      emit(NewsGetSearchSuccecsState());
+    }).catchError((onError) {
+      print(onError.toString());
+      NewsGetSearchErrotState(error: onError.toString());
+    });
+  }
+
   bool isDark = false;
 
   void changAppMode() {

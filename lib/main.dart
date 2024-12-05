@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => NewsCubit(),
+          create: (context) => NewsCubit()..getBusnice(),
         ),
         BlocProvider(
           create: (context) => TestNewsCubit(),
